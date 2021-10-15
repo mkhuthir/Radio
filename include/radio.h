@@ -210,6 +210,7 @@ void read_EEPROM()
   // Read Volume
   radio.setVolume(EEPROM.read(eeprom_vol));
 }
+
 //-------------------------------------------------------------------------------------------------------------
 // Interrupt handler that reads the encoder. It set the updateStation flag when a new indent is found 
 //-------------------------------------------------------------------------------------------------------------
@@ -235,6 +236,16 @@ void updateRotary()
   
   rotaryLast = rotaryCurrent; //store current rotary AB values for next time
 
+}
+//-------------------------------------------------------------------------------------------------------------
+// Initilize Rotary interface
+//-------------------------------------------------------------------------------------------------------------
+void enableRotary()
+{
+  pinMode(rotaryPinA, INPUT_PULLUP);         // pin is input and pulled high
+  pinMode(rotaryPinB, INPUT_PULLUP);         // pin is input and pulled high
+  attachInterrupt(0, updateRotary, CHANGE);  // call updateEncoder() when any high/low changed seen on interrupt 0 (pin 2)
+  attachInterrupt(1, updateRotary, CHANGE);  // call updateEncoder() when any high/low changed seen on interrupt 1 (pin 3)
 }
 //-------------------------------------------------------------------------------------------------------------
 // Update Channel Freq
