@@ -22,8 +22,8 @@
 
 // Used Pins
 #define LED1        5       // LED1 pin
-#define rotaryPinA  2       // encoder pin A
-#define rotaryPinB  3       // encoder pin B. Note that rotaryPinC is connected to GND
+#define rotaryPinA  2       // Rotary encoder pin A
+#define rotaryPinB  3       // Rotary encoder pin B. Note that Rotary encoder Pin C is connected to GND
 
 // Direction
 #define UP    true
