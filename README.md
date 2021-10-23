@@ -22,6 +22,8 @@ Connections:
 - RST     → A.Pro Mini D4
 - GPIO1   → LED2
 - GPIO2   → A.Pro Mini D6
+- ROUT    → Amp R-in
+- LOUT    → Amp L-in  
 
 -----------------------
 ### 3.3V A.Pro Mini
