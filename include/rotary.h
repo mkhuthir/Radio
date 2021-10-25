@@ -58,7 +58,7 @@ void enableRotary()
 //-------------------------------------------------------------------------------------------------------------
 // Update Channel Freq
 //-------------------------------------------------------------------------------------------------------------
-void updateChannel()
+void updateChannel(const Si4703& radio)
 {
   digitalWrite(LED1, LOW);           // turn LED1 OFF
   radio.writeGPIO(GPIO1, GPIO_Low);  // turn LED2 OFF
@@ -72,8 +72,8 @@ void updateChannel()
       radio.decChannel();
     }
   
-  printCurrentSettings();     // Print channel info
-  rotaryUpdated = false;      //Clear flag
+  //printCurrentSettings(radio);        // Print channel info
+  rotaryUpdated = false;              //Clear flag
 
   digitalWrite(LED1, HIGH);           // When done turn LED1 On
   radio.writeGPIO(GPIO1, GPIO_High);  // turn LED2 ON
