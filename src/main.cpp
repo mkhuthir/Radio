@@ -14,6 +14,10 @@
 #include <terminal.h>   // Serial terminal I/O to display status and control radio
 #include <rotary.h>     // To drive the rotary encoder used for frquency tuning
 
+//-------------------------------------------------------------------------------------------------------------
+// Initiate radio class
+//-------------------------------------------------------------------------------------------------------------
+
 Si4703 radio;
 
 //-------------------------------------------------------------------------------------------------------------
@@ -26,7 +30,7 @@ void setup()
   pinMode(LED1, OUTPUT);      // LED1 pin is output
   digitalWrite(LED1, LOW);    // turn LED1 OFF
   radio.start();              // start radio device
-  read_EEPROM(radio);              // load saved settings
+  read_EEPROM(radio);         // load saved settings
   enableRotary();             // Enable rotary encoder
 
   // Show ready status

@@ -232,25 +232,25 @@ void processCommand(const Si4703& radio)
         }
       else
         {
-          write_EEPROM(radio);                    // Save channel to EEPROM
+          write_EEPROM(radio);            // Save channel to EEPROM
           printCurrentSettings(radio);
         }
-      digitalWrite(LED1, HIGH);          // When done turn LED1 On
-      radio.writeGPIO(GPIO1, GPIO_High); // turn LED2 ON
+      digitalWrite(LED1, HIGH);           // When done turn LED1 On
+      radio.writeGPIO(GPIO1, GPIO_High);  // turn LED2 ON
     } 
-  else if (ch == '0')             // Tune to favorite channel 0
+  else if (ch == '0')                     // Tune to favorite channel 0
     {
       radio.setChannel(fav_0);
-      write_EEPROM(radio);             // Save channel to EEPROM
+      write_EEPROM(radio);                // Save channel to EEPROM
       printCurrentSettings(radio);
     }
-  else if (ch == '1')             // Tune to favorite channel 1
+  else if (ch == '1')                     // Tune to favorite channel 1
     {
       radio.setChannel(fav_1);
-      write_EEPROM(radio);             // Save channel to EEPROM
+      write_EEPROM(radio);                // Save channel to EEPROM
       printCurrentSettings(radio);
     }
-  else if (ch == '2')             // Tune to favorite channel 2
+  else if (ch == '2')                     // Tune to favorite channel 2
     {
       radio.setChannel(fav_2);
       write_EEPROM(radio);             // Save channel to EEPROM

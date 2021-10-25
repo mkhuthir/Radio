@@ -25,8 +25,8 @@ void updateRotary()
   int pinA = digitalRead(rotaryPinA); // read current value of Pin A
   int pinB = digitalRead(rotaryPinB); // read current value of Pin B
 
-  int rotaryCurrent = (pinA << 1) |pinB;            // converting the 2 pins values to single number
-  int pattern = (rotaryLast << 2) | rotaryCurrent;  // adding it to the previous encoded value
+  int rotaryCurrent = (pinA << 1) | pinB;            // converting the 2 pins values to single number
+  int pattern = (rotaryLast << 2) | rotaryCurrent;   // adding it to the previous encoded value
 
   if(pattern == 0b1101 || pattern == 0b0100 || pattern == 0b0010 || pattern == 0b1011)
     {
