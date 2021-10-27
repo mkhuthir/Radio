@@ -13,12 +13,15 @@
 #include <eeprom_rw.h>  // To save configuration parameters such as channel and volume.
 #include <terminal.h>   // Serial terminal I/O to display status and control radio
 #include <rotary.h>     // To drive the rotary encoder used for frquency tuning
+#include <sevenseg.h>       // To drive the 7-Segment Display
+
 
 //-------------------------------------------------------------------------------------------------------------
-// Initiate radio class
+// Initiate classes
 //-------------------------------------------------------------------------------------------------------------
 
 Si4703 radio;
+LedControl lc=LedControl(SSegDIN,SSegCLK,SSegCS,SSegNumDev);
 
 //-------------------------------------------------------------------------------------------------------------
 // Arduino initial Setup
@@ -26,6 +29,9 @@ Si4703 radio;
 void setup()
 {
   Serial.begin(115200);       // start serial
+  
+  sSegStart(lc);
+  sSegDemo(lc);
 
   pinMode(LED1, OUTPUT);      // LED1 pin is output
   digitalWrite(LED1, LOW);    // turn LED1 OFF
@@ -51,5 +57,4 @@ void loop()
 
   if (rotaryUpdated)      updateChannel(radio);  // Interrupt tells us to update the station when updateStation=True
   if (Serial.available()) processCommand(radio); // Radio control from serial interface
-
 }
