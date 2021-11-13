@@ -47,10 +47,8 @@ void setup()
   printCurrentSettings(radio);
 
   // Test Nextion Display
-
   nexDisp.setComponentText("rssi", "90");
   delay(50);
-  
   nexDisp.setComponentText("freq", "104.90");
   delay(50);
   
