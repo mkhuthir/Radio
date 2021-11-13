@@ -3,8 +3,6 @@
 
 ### Hardware used:
 -----------------------   
- *   1 x SparkFun Breadboard Power Supply Stick - 5V/3.3V (https://www.sparkfun.com/products/13032)
- *   2 x SparkFun Mono Audio Amp Breakout - TPA2005D1     (https://www.sparkfun.com/products/11044)
  *   1 x SparkFun FM Tuner Basic Breakout - Si4703        (https://www.sparkfun.com/products/11083)
  *   1 x Arduino Pro Mini 328 - 3.3V/8MHz                 (https://www.sparkfun.com/products/11114)
 
@@ -37,6 +35,8 @@ Connections:
 - D3      → Rotary Encoder B
 - D4      → Si4703 RST
 - D5      → LED1
+- 10      → Nextion Display RX
+- 11      → Nextion Display TX
      
 -----------------------
 ### Rotary Encoder
