@@ -191,7 +191,7 @@ void processCommand(const Si4703& radio)
       digitalWrite(LED1, LOW);           // turn LED1 OFF
       radio.writeGPIO(GPIO1, GPIO_Low);  // turn LED2 OFF
       radio.incChannel();
-      write_EEPROM(radio);                    // Save channel to EEPROM
+      write_EEPROM(radio);               // Save channel to EEPROM
       printCurrentSettings(radio);
       digitalWrite(LED1, HIGH);          // When done turn LED1 On
       radio.writeGPIO(GPIO1, GPIO_High); // turn LED2 ON
@@ -201,7 +201,7 @@ void processCommand(const Si4703& radio)
       digitalWrite(LED1, LOW);           // turn LED1 OFF
       radio.writeGPIO(GPIO1, GPIO_Low);  // turn LED2 OFF
       radio.decChannel();
-      write_EEPROM(radio);                    // Save channel to EEPROM
+      write_EEPROM(radio);               // Save channel to EEPROM
       printCurrentSettings(radio);
       digitalWrite(LED1, HIGH);          // When done turn LED1 On
       radio.writeGPIO(GPIO1, GPIO_High); // turn LED2 ON
@@ -216,16 +216,16 @@ void processCommand(const Si4703& radio)
         }
       else
         {
-          write_EEPROM(radio);                    // Save channel to EEPROM
+          write_EEPROM(radio);            // Save channel to EEPROM
           printCurrentSettings(radio);
         }
-      digitalWrite(LED1, HIGH);          // When done turn LED1 On
-      radio.writeGPIO(GPIO1, GPIO_High); // turn LED2 ON
+      digitalWrite(LED1, HIGH);           // When done turn LED1 On
+      radio.writeGPIO(GPIO1, GPIO_High);  // turn LED2 ON
     } 
-  else if (ch == 'l')             // Channel Seek last
+  else if (ch == 'l')                     // Channel Seek last
     {
-      digitalWrite(LED1, LOW);           // turn LED1 OFF
-      radio.writeGPIO(GPIO1, GPIO_Low);  // turn LED2 OFF
+      digitalWrite(LED1, LOW);            // turn LED1 OFF
+      radio.writeGPIO(GPIO1, GPIO_Low);   // turn LED2 OFF
       if (!radio.seekDown())
         {
           Serial.println("| Error: Seek failure or band limit reached!!");
@@ -253,22 +253,22 @@ void processCommand(const Si4703& radio)
   else if (ch == '2')                     // Tune to favorite channel 2
     {
       radio.setChannel(fav_2);
-      write_EEPROM(radio);             // Save channel to EEPROM
+      write_EEPROM(radio);                // Save channel to EEPROM
       printCurrentSettings(radio);
     }
-  else if (ch == '3')             // Tune to favorite channel 3
+  else if (ch == '3')                     // Tune to favorite channel 3
     {
       radio.setChannel(fav_3);
-      write_EEPROM(radio);             // Save channel to EEPROM
+      write_EEPROM(radio);                // Save channel to EEPROM
       printCurrentSettings(radio);
     }
-  else if (ch == '4')             // Tune to favorite channel 4
+  else if (ch == '4')                     // Tune to favorite channel 4
     {
       radio.setChannel(fav_4);
-      write_EEPROM(radio);             // Save channel to EEPROM
+      write_EEPROM(radio);                // Save channel to EEPROM
       printCurrentSettings(radio);
     }
-  else if (ch == '5')             // Tune to favorite channel 5
+  else if (ch == '5')                     // Tune to favorite channel 5
     {
       radio.setChannel(fav_5);
       write_EEPROM(radio);             // Save channel to EEPROM

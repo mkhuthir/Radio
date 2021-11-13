@@ -18,17 +18,15 @@
 //-------------------------------------------------------------------------------------------------------------
 // Initiate classes
 //-------------------------------------------------------------------------------------------------------------
-
-Si4703          radio;                  // FM Radio Class
-SoftwareSerial  nextion(11, 10);        // Software Serial Class (TX to pin 11 and RX to pin 10)
-Nextion         nexDisp(nextion, 9600); // Nextion Display Class
-
+Si4703          radio;                      // FM Radio Class
+SoftwareSerial  nextion(nexTX, nexRX);      // Software Serial Class
+Nextion         nexDisp(nextion, nexBaud);  // Nextion Display Class
 //-------------------------------------------------------------------------------------------------------------
 // Arduino initial Setup
 //-------------------------------------------------------------------------------------------------------------
 void setup()
 {
-  Serial.begin(115200);       // start serial
+  Serial.begin(serBaud);       // start serial
   nexDisp.init();             // start Nextion Display
 
   pinMode(LED1, OUTPUT);      // LED1 pin is output
@@ -47,11 +45,10 @@ void setup()
   printCurrentSettings(radio);
 
   // Test Nextion Display
-  nexDisp.setComponentText("rssi", "90");
+  nexDisp.setComponentText("rssi", "91");
   delay(50);
   nexDisp.setComponentText("freq", "104.90");
   delay(50);
-  
 }
 //-------------------------------------------------------------------------------------------------------------
 // Arduino main loop
@@ -59,6 +56,12 @@ void setup()
 void loop()
 {
 
-  if (rotaryUpdated)      updateChannel(radio);  // Interrupt tells us to update the station when updateStation=True
-  if (Serial.available()) processCommand(radio); // Radio control from serial interface
+  if (rotaryUpdated){
+    updateChannel(radio);  // Interrupt tells us to update the station when updateStation=True
+  }
+    
+  if (Serial.available()){
+    processCommand(radio); // Radio control from serial interface
+  }
+    
 }
