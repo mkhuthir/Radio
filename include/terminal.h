@@ -25,7 +25,7 @@ int       fav_9 = 10740;
 //-------------------------------------------------------------------------------------------------------------
 // Display Welcome Message.
 //-------------------------------------------------------------------------------------------------------------
-void printWelcome(const Si4703& radio)
+void printWelcome(Si4703& radio)
 {
   Serial.println("\nWelcome...");
   
@@ -59,7 +59,7 @@ void printWelcome(const Si4703& radio)
 //-------------------------------------------------------------------------------------------------------------
 // Display current settings such as channel and volume.
 //-------------------------------------------------------------------------------------------------------------
-void printCurrentSettings(const Si4703& radio)
+void printCurrentSettings(Si4703& radio)
 {
    Serial.print("| Ch:");
    Serial.print(float(radio.getChannel())/100,2);
@@ -153,7 +153,7 @@ void printHelp()
 //-------------------------------------------------------------------------------------------------------------
 // Process a command from serial terminal
 //-------------------------------------------------------------------------------------------------------------
-void processCommand(const Si4703& radio)
+void processCommand(Si4703& radio)
 {
   
   char ch = Serial.read();        // Read command

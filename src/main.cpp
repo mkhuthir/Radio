@@ -6,10 +6,11 @@
 //-------------------------------------------------------------------------------------------------------------
 // Required Libraries
 //-------------------------------------------------------------------------------------------------------------
+
 #include <Arduino.h>        // Arduino std lib
-#include <Si4703.h>         // library to control Silicon Labs' Si4703 FM Radio Receiver.
-#include <Wire.h>           // Used for I2C interface.
 #include <config.h>         // Configuration file
+#include <Wire.h>           // Used for Si4703 I2C interface.
+#include <Si4703.h>         // library to control Silicon Labs' Si4703 FM Radio Receiver.
 #include <eeprom_rw.h>      // To save configuration parameters such as channel and volume.
 #include <terminal.h>       // Serial terminal I/O to display status and control radio
 #include <rotary.h>         // To drive the rotary encoder used for frquency tuning

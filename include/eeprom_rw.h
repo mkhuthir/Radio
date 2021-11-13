@@ -22,7 +22,7 @@
 //-------------------------------------------------------------------------------------------------------------
 // Read settings from EEPROM
 //-------------------------------------------------------------------------------------------------------------
-void read_EEPROM(const Si4703& radio)
+void read_EEPROM(Si4703& radio)
 {
   // Read channel value
   int MSB = EEPROM.read(eeprom_chn_msb);  // load the msb into one 8-bit register
@@ -36,7 +36,7 @@ void read_EEPROM(const Si4703& radio)
 //-------------------------------------------------------------------------------------------------------------
 // Write current settings to EEPROM
 //-------------------------------------------------------------------------------------------------------------
-void write_EEPROM(const Si4703& radio)
+void write_EEPROM(Si4703& radio)
 {
   // Save current channel value
   int chan = radio.getChannel();      // get the current channel
