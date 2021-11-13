@@ -58,6 +58,7 @@ void loop()
 
   if (rotaryUpdated){
     updateChannel(radio);  // Interrupt tells us to update the station when updateStation=True
+    printCurrentSettings(radio);
   }
     
   if (Serial.available()){
