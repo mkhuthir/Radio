@@ -3,8 +3,8 @@
  *   Muthanna Alwahash 2020
  *   
  */
-#ifndef terminal_h
-#define terminal_h
+#ifndef _terminal_h_
+#define _terminal_h_
 
 //-------------------------------------------------------------------------------------------------------------
 // Variables
@@ -274,7 +274,6 @@ void processCommand(Si4703& radio)
       radio.writeGPIO(GPIO1, GPIO_Low);  // turn LED2 OFF
       radio.decChannel();
       write_EEPROM(radio);               // Save channel to EEPROM
-
       digitalWrite(LED1, HIGH);          // When done turn LED1 On
       radio.writeGPIO(GPIO1, GPIO_High); // turn LED2 ON
     } 
