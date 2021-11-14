@@ -64,6 +64,7 @@ void loop()
     
   if (Serial.available()){
     processCommand(radio); // Radio control from serial interface
+    printCurrentSettings(radio);
   }
     
 }
