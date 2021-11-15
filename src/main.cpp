@@ -56,14 +56,25 @@ void setup()
 //-------------------------------------------------------------------------------------------------------------
 void loop()
 {
-
+  // Updates from Rotary Encoder
   if (rotaryUpdated){
-    updateChannel(radio);  // Interrupt tells us to update the station when updateStation=True
+    digitalWrite(LED1, LOW);            // turn LED1 OFF
+    radio.writeGPIO(GPIO1, GPIO_Low);   // turn LED2 OFF
+    updateChannel(radio);               // Interrupt tells us to update the station when updateStation=True
+    write_EEPROM(radio);                // Save channel to EEPROM
+    digitalWrite(LED1, HIGH);           // When done turn LED1 On
+    radio.writeGPIO(GPIO1, GPIO_High);  // and turn LED2 ON
     printCurrentSettings(radio);
   }
-    
+  
+  // Updates from Serial Terminal
   if (Serial.available()){
-    processCommand(radio); // Radio control from serial interface
+    digitalWrite(LED1, LOW);            // turn LED1 OFF
+    radio.writeGPIO(GPIO1, GPIO_Low);   // turn LED2 OFF
+    processCommand(radio);              // Radio control from serial interface
+    write_EEPROM(radio);                // Save channel to EEPROM
+    digitalWrite(LED1, HIGH);           // When done turn LED1 On
+    radio.writeGPIO(GPIO1, GPIO_High);  // and turn LED2 ON
     printCurrentSettings(radio);
   }
     

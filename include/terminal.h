@@ -135,7 +135,7 @@ void printHelp()
   Serial.println("\n----------- Volume Control --------------");
   Serial.println("+ -     inc/Dec Volume (max 15)");
   Serial.println("e       Enable/Disable Volume 30dB Ext");
-  Serial.println("m       Mute/Unmute volume");
+  Serial.println("m       Mute/Un-mute volume");
   Serial.println("s       Set Mono/Sterio");
   Serial.println("----------- Tuneing -----------------------");
   Serial.println("u d     Frequency up / down");
@@ -169,7 +169,7 @@ void processCommand(Si4703& radio)
       radio.decVolume();
       break;
 
-    case 'm':                              // Mute/Unmute volume
+    case 'm':                              // Mute/Un-mute volume
       radio.setMute(!radio.getMute());     // flip status
       break;
 
@@ -182,80 +182,75 @@ void processCommand(Si4703& radio)
       break;
     
     case 'u':                              // Tune Frequency up
-      digitalWrite(LED1, LOW);             // turn LED1 OFF
-      radio.writeGPIO(GPIO1, GPIO_Low);    // turn LED2 OFF
       radio.incChannel();                  // increment freq
-      write_EEPROM(radio);                 // Save channel to EEPROM
-      digitalWrite(LED1, HIGH);            // When done turn LED1 On
-      radio.writeGPIO(GPIO1, GPIO_High);   // turn LED2 ON
       break;
 
-    case 'd':
-    
+    case 'd':                              // Tune Frequency DOWN
+      radio.decChannel();                  // decrement freq
       break;
    
-    case 'n':
-    
+    case 'n':                               // Channel Seek next
+      if (!radio.seekUp()) Serial.println("| Error: Seek failure or band limit reached!!");
       break;
 
-    case 'l':
-    
+    case 'l':                               // Channel Seek last
+      if (!radio.seekDown()) Serial.println("| Error: Seek failure or band limit reached!!");
       break;
 
-    case '0':
-    
+    case '0':                               // Tune to favorite channel 
+      radio.setChannel(fav_0);
       break;
 
-    case '1':
-    
+    case '1':                               // Tune to favorite channel 
+      radio.setChannel(fav_1);
       break;
 
-    case '2':
-    
+    case '2':                               // Tune to favorite channel 
+      radio.setChannel(fav_2);
       break;
     
-    case '3':
-    
+    case '3':                               // Tune to favorite channel 
+      radio.setChannel(fav_3);
       break;
     
-    case '4':
-    
+    case '4':                               // Tune to favorite channel 
+      radio.setChannel(fav_4);
       break;
     
-    case '5':
-    
+    case '5':                               // Tune to favorite channel 
+      radio.setChannel(fav_5);
       break;
     
-    case '6':
-    
+    case '6':                               // Tune to favorite channel 
+      radio.setChannel(fav_6);
       break;
     
-    case '7':
-    
+    case '7':                               // Tune to favorite channel 
+      radio.setChannel(fav_7);
       break;
     
-    case '8':
-    
+    case '8':                               // Tune to favorite channel 
+      radio.setChannel(fav_8);
       break;
     
-    case '9':
-    
-      break;
-
-    case 'r':
-    
+    case '9':                               // Tune to favorite channel 
+      radio.setChannel(fav_9);
       break;
 
-    case 'i':
-    
+    case 'r':           // Listen for RDS Data
+      // TODO:
       break;
 
-    case 'f':
-    
+    case 'i':           // Print current settings
+      // do nothing, setting will be printed after breaking out
       break;
 
-    case 'h':
-    
+    case 'f':                               // List favorite channels
+      printFavouriteList();
+      break;
+
+    case 'h':                               // Print Help
+      printHelp();
       break;
 
     default:
@@ -265,129 +260,5 @@ void processCommand(Si4703& radio)
       Serial.println(" send 'h' for help.");
       break;
   }
-
-/*
-
-  else if (ch == 'd')             // Tune Frequency down
-    {
-      digitalWrite(LED1, LOW);           // turn LED1 OFF
-      radio.writeGPIO(GPIO1, GPIO_Low);  // turn LED2 OFF
-      radio.decChannel();
-      write_EEPROM(radio);               // Save channel to EEPROM
-      digitalWrite(LED1, HIGH);          // When done turn LED1 On
-      radio.writeGPIO(GPIO1, GPIO_High); // turn LED2 ON
-    } 
-  else if (ch == 'n')             // Channel Seek next
-    {
-      digitalWrite(LED1, LOW);           // turn LED1 OFF
-      radio.writeGPIO(GPIO1, GPIO_Low);  // turn LED2 OFF
-      if (!radio.seekUp()) 
-        {
-          Serial.println("| Error: Seek failure or band limit reached!!");
-        }
-      else
-        {
-          write_EEPROM(radio);            // Save channel to EEPROM
-
-        }
-      digitalWrite(LED1, HIGH);           // When done turn LED1 On
-      radio.writeGPIO(GPIO1, GPIO_High);  // turn LED2 ON
-    } 
-  else if (ch == 'l')                     // Channel Seek last
-    {
-      digitalWrite(LED1, LOW);            // turn LED1 OFF
-      radio.writeGPIO(GPIO1, GPIO_Low);   // turn LED2 OFF
-      if (!radio.seekDown())
-        {
-          Serial.println("| Error: Seek failure or band limit reached!!");
-        }
-      else
-        {
-          write_EEPROM(radio);            // Save channel to EEPROM
-
-        }
-      digitalWrite(LED1, HIGH);           // When done turn LED1 On
-      radio.writeGPIO(GPIO1, GPIO_High);  // turn LED2 ON
-    } 
-  else if (ch == '0')                     // Tune to favorite channel 0
-    {
-      radio.setChannel(fav_0);
-      write_EEPROM(radio);                // Save channel to EEPROM
-
-    }
-  else if (ch == '1')                     // Tune to favorite channel 1
-    {
-      radio.setChannel(fav_1);
-      write_EEPROM(radio);                // Save channel to EEPROM
-
-    }
-  else if (ch == '2')                     // Tune to favorite channel 2
-    {
-      radio.setChannel(fav_2);
-      write_EEPROM(radio);                // Save channel to EEPROM
-
-    }
-  else if (ch == '3')                     // Tune to favorite channel 3
-    {
-      radio.setChannel(fav_3);
-      write_EEPROM(radio);                // Save channel to EEPROM
-
-    }
-  else if (ch == '4')                     // Tune to favorite channel 4
-    {
-      radio.setChannel(fav_4);
-      write_EEPROM(radio);                // Save channel to EEPROM
-
-    }
-  else if (ch == '5')                     // Tune to favorite channel 5
-    {
-      radio.setChannel(fav_5);
-      write_EEPROM(radio);             // Save channel to EEPROM
-
-    }
-  else if (ch == '6')             // Tune to favorite channel 6
-    {
-      radio.setChannel(fav_6);
-      write_EEPROM(radio);             // Save channel to EEPROM
-
-    }
-  else if (ch == '7')             // Tune to favorite channel 7
-    {
-      radio.setChannel(fav_7);
-      write_EEPROM(radio);             // Save channel to EEPROM
-
-    }
-  else if (ch == '8')             // Tune to favorite channel 8
-    {
-      radio.setChannel(fav_8);
-      write_EEPROM(radio);             // Save channel to EEPROM
-
-    }
-  else if (ch == '9')             // Tune to favorite channel 9
-    {
-      radio.setChannel(fav_9);
-      write_EEPROM(radio);             // Save channel to EEPROM
-
-    }
-  else if (ch == 'r')             // Listen for RDS Data
-    {
-      // TODO:
-    }
-  else if (ch == 'i')             // Print current settings
-    {
-      printCurrentSettings(radio);
-    }
-  else if (ch == 'f')             // List favorite channels
-    {
-      printFavouriteList();
-    }
-  else if (ch == 'h')             // Print help
-    {
-      printHelp();
-    }
-  else                            // Unknown commands
-    {
-    }
-*/
 }
 #endif
