@@ -45,7 +45,7 @@ void updateRotary()
 }
 
 //-------------------------------------------------------------------------------------------------------------
-// Initilize Rotary interface
+// Initialize Rotary interface
 //-------------------------------------------------------------------------------------------------------------
 void enableRotary()
 {
@@ -71,10 +71,9 @@ void updateChannel(Si4703& radio)
     {
       radio.decChannel();
     }
-  
-  //printCurrentSettings(radio);        // Print channel info
-  rotaryUpdated = false;              //Clear flag
-
+ 
+  rotaryUpdated = false;              // Clear flag
+  write_EEPROM(radio);                // Save channel to EEPROM
   digitalWrite(LED1, HIGH);           // When done turn LED1 On
   radio.writeGPIO(GPIO1, GPIO_High);  // turn LED2 ON
 }

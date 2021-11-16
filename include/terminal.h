@@ -155,7 +155,9 @@ void printHelp()
 //-------------------------------------------------------------------------------------------------------------
 void processCommand(Si4703& radio)
 {
-  
+  digitalWrite(LED1, LOW);            // turn LED1 OFF
+  radio.writeGPIO(GPIO1, GPIO_Low);   // turn LED2 OFF
+
   char ch = Serial.read();        // Read command
   Serial.print(" ");              // print single space after reading a command
   
@@ -260,5 +262,9 @@ void processCommand(Si4703& radio)
       Serial.println(" send 'h' for help.");
       break;
   }
+  
+  write_EEPROM(radio);                // Save channel to EEPROM
+  digitalWrite(LED1, HIGH);           // When done turn LED1 On
+  radio.writeGPIO(GPIO1, GPIO_High);  // and turn LED2 ON
 }
 #endif

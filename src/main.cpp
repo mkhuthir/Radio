@@ -6,7 +6,6 @@
 //-------------------------------------------------------------------------------------------------------------
 // Required Libraries
 //-------------------------------------------------------------------------------------------------------------
-
 #include <Arduino.h>        // Arduino std lib
 #include <config.h>         // Configuration file
 #include <Wire.h>           // Used for Si4703 I2C interface.
@@ -27,29 +26,26 @@ Nextion         nexDisp(nextion, nexBaud);  // Nextion Display Class
 //-------------------------------------------------------------------------------------------------------------
 void setup()
 {
-  Serial.begin(serBaud);       // start serial
-  nexDisp.init();             // start Nextion Display
+  pinMode(LED1, OUTPUT);              // LED1 pin is output
+  digitalWrite(LED1, LOW);            // turn LED1 OFF
+  radio.writeGPIO(GPIO1, GPIO_Low);   // turn LED2 OFF
 
-  pinMode(LED1, OUTPUT);      // LED1 pin is output
-  digitalWrite(LED1, LOW);    // turn LED1 OFF
-  radio.start();              // start radio device
-  read_EEPROM(radio);         // load saved settings
-  enableRotary();             // Enable rotary encoder
+  Serial.begin(serBaud);              // start serial
+  nexDisp.init();                     // start Nextion Display
 
-  // Show ready status
-  digitalWrite(LED1, HIGH);           // turn LED1 ON
-  radio.writeGPIO(GPIO1, GPIO_High);  // turn LED2 ON
+  radio.start();                      // start radio device
+  read_EEPROM(radio);                 // load saved settings
+  enableRotary();                     // Enable rotary encoder
 
   // Display info
   printWelcome(radio);
   printHelp();
   printCurrentSettings(radio);
+  nexDisp.updateDisplay(radio);
 
-  // Test Nextion Display
-  nexDisp.setComponentText("rssi", "91");
-  delay(50);
-  nexDisp.setComponentText("freq", "104.90");
-  delay(50);
+  // Show ready status
+  digitalWrite(LED1, HIGH);           // turn LED1 ON
+  radio.writeGPIO(GPIO1, GPIO_High);  // turn LED2 ON
 }
 //-------------------------------------------------------------------------------------------------------------
 // Arduino main loop
@@ -58,24 +54,18 @@ void loop()
 {
   // Updates from Rotary Encoder
   if (rotaryUpdated){
-    digitalWrite(LED1, LOW);            // turn LED1 OFF
-    radio.writeGPIO(GPIO1, GPIO_Low);   // turn LED2 OFF
     updateChannel(radio);               // Interrupt tells us to update the station when updateStation=True
-    write_EEPROM(radio);                // Save channel to EEPROM
-    digitalWrite(LED1, HIGH);           // When done turn LED1 On
-    radio.writeGPIO(GPIO1, GPIO_High);  // and turn LED2 ON
     printCurrentSettings(radio);
+    nexDisp.updateDisplay(radio);
   }
   
   // Updates from Serial Terminal
   if (Serial.available()){
-    digitalWrite(LED1, LOW);            // turn LED1 OFF
-    radio.writeGPIO(GPIO1, GPIO_Low);   // turn LED2 OFF
     processCommand(radio);              // Radio control from serial interface
-    write_EEPROM(radio);                // Save channel to EEPROM
-    digitalWrite(LED1, HIGH);           // When done turn LED1 On
-    radio.writeGPIO(GPIO1, GPIO_High);  // and turn LED2 ON
     printCurrentSettings(radio);
+    nexDisp.updateDisplay(radio);
   }
     
+  // Refersh Nextion Display
+  nexDisp.updateDisplay(radio);
 }
