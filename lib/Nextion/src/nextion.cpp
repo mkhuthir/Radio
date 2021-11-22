@@ -100,4 +100,5 @@ void Nextion::updateDisplay(Si4703& radio)
 {
   setComponentText("rssi", String(radio.getRSSI()));
   setComponentText("freq",String(float(radio.getChannel())/100,2));
+  // TODO: Add other parameters VOL,...
 }
