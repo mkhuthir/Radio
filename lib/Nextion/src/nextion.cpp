@@ -99,5 +99,5 @@ boolean Nextion::setComponentValue(String component, int value)
 void Nextion::updateDisplay(Si4703& radio)
 {
   setComponentText("rssi", String(radio.getRSSI()));
-  setComponentText("freq",String(radio.getChannel()));
+  setComponentText("freq",String(float(radio.getChannel())/100,2));
 }
