@@ -24,8 +24,17 @@ Nextion         nexDisp(nextion, nexBaud);  // Nextion Display Class
 //-------------------------------------------------------------------------------------------------------------
 // Arduino initial Setup
 //-------------------------------------------------------------------------------------------------------------
+
+
+long previousMillis = 0;            // will store last time
+long interval       = 1000;         // interval (milliseconds)
+long currentMillis;                 // will store current time
+
+
 void setup()
 {
+
+
   pinMode(LED1, OUTPUT);              // LED1 pin is output
   digitalWrite(LED1, LOW);            // turn LED1 OFF
   radio.writeGPIO(GPIO1, GPIO_Low);   // turn LED2 OFF
@@ -67,5 +76,11 @@ void loop()
   }
     
   // Refersh Nextion Display
-  nexDisp.updateDisplay(radio);
+  currentMillis = millis();
+
+  if(currentMillis - previousMillis > interval) {
+    nexDisp.updateDisplay(radio);
+  }
+  
+  previousMillis = currentMillis;       // Remember the time
 }
