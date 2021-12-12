@@ -21,20 +21,17 @@
 Si4703          radio;                      // FM Radio Class
 SoftwareSerial  nextion(nexTX, nexRX);      // Software Serial Class
 Nextion         nexDisp(nextion, nexBaud);  // Nextion Display Class
+
+//-------------------------------------------------------------------------------------------------------------
+// Variables
+//-------------------------------------------------------------------------------------------------------------
+long previousMillis   = 0;            // will store last refresh time
+
 //-------------------------------------------------------------------------------------------------------------
 // Arduino initial Setup
 //-------------------------------------------------------------------------------------------------------------
-
-
-long previousMillis = 0;            // will store last time
-long interval       = 1000;         // interval (milliseconds)
-long currentMillis;                 // will store current time
-
-
 void setup()
 {
-
-
   pinMode(LED1, OUTPUT);              // LED1 pin is output
   digitalWrite(LED1, LOW);            // turn LED1 OFF
   radio.writeGPIO(GPIO1, GPIO_Low);   // turn LED2 OFF
@@ -51,6 +48,9 @@ void setup()
   printHelp();
   printCurrentSettings(radio);
   nexDisp.updateDisplay(radio);
+
+  // Capture Current Time
+  previousMillis = millis();          // Remember the time
 
   // Show ready status
   digitalWrite(LED1, HIGH);           // turn LED1 ON
@@ -76,11 +76,10 @@ void loop()
   }
     
   // Refersh Nextion Display
-  currentMillis = millis();
-
-  if(currentMillis - previousMillis > interval) {
-    nexDisp.updateDisplay(radio);
+  if(millis() - previousMillis > refreshInterval) {
+    previousMillis = millis();          // Remember the time
+    nexDisp.updateDisplay(radio);       // Time to update Display
   }
   
-  previousMillis = currentMillis;       // Remember the time
+  
 }

@@ -16,9 +16,12 @@
                             // Rotary encoder C must be connected to GND
 
 // Nextion Display
-#define nexTX     11        // Serial TX Pin
-#define nexRX     10        // Serial RX Pin
-#define nexBaud   9600      // Serial Baud Rate
+#define nexTX           11      // Serial TX Pin
+#define nexRX           10      // Serial RX Pin
+#define nexBaud         9600    // Serial Baud Rate
+#define refreshInterval 300     // Display refresh interval (milliseconds)
 
-#define serBaud   115200    // Serial Port Baud Rate
+// Serial Port
+#define serBaud   115200        // Serial Port Baud Rate
+
 #endif
