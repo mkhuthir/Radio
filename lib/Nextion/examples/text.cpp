@@ -1,3 +1,8 @@
+/*  
+ *   Nextion Display Example to set text component
+ *   Muthanna Alwahash 2021
+ *   
+ */
 
 #include <SoftwareSerial.h>
 #include <Nextion.h>
