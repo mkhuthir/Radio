@@ -4,8 +4,8 @@
  *   
  */
 
-#ifndef _terminal_h_
-#define _terminal_h_
+#ifndef _radio_terminal_h_
+#define _radio_terminal_h_
 
 //-------------------------------------------------------------------------------------------------------------
 // Variables

@@ -7,17 +7,13 @@
 #ifndef _nextion_h_
 #define _nextion_h_
 
+#define USE_SOFTWARE_SERIAL // Comment this line for use of HardwareSerial
+
 //-------------------------------------------------------------------------------------------------------------
 // Required Libraries
 //-------------------------------------------------------------------------------------------------------------
 #include <Arduino.h>
 #include <Si4703.h>
-
-//-------------------------------------------------------------------------------------------------------------
-// Defines
-//-------------------------------------------------------------------------------------------------------------
-#define USE_SOFTWARE_SERIAL //Comment this line for use  HardwareSerial
-
 #if defined(USE_SOFTWARE_SERIAL)
 #include <SoftwareSerial.h>
 #endif
@@ -47,8 +43,7 @@ class Nextion{
     boolean       init(const char* pageId = "0");
     boolean       setComponentText(String component, String txt);
     boolean       setComponentValue(String component, int value);
-    void          updateDisplay(Si4703& radio);
-
+   
 };
 #endif
 

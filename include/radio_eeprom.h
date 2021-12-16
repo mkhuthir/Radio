@@ -4,8 +4,8 @@
  *   
  */
 
-#ifndef eeprom_rw_h
-#define eeprom_rw_h
+#ifndef _radio_eeprom_h_
+#define _radio_eeprom_h_
 
 //-------------------------------------------------------------------------------------------------------------
 // Required Libraries

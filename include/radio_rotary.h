@@ -4,8 +4,8 @@
  *   
  */
 
-#ifndef rotary_h
-#define rotary_h
+#ifndef _radio_rotary_h_
+#define _radio_rotary_h_
 
 //-------------------------------------------------------------------------------------------------------------
 // Rotary Direction

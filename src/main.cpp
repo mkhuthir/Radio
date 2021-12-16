@@ -8,14 +8,19 @@
 // Required Libraries
 //-------------------------------------------------------------------------------------------------------------
 #include <Arduino.h>        // Arduino std lib
-#include <config.h>         // Configuration file
-#include <Wire.h>           // Used for Si4703 I2C interface.
-#include <Si4703.h>         // library to control Silicon Labs' Si4703 FM Radio Receiver.
-#include <eeprom_rw.h>      // To save configuration parameters such as channel and volume.
-#include <terminal.h>       // Serial terminal I/O to display status and control radio
-#include <rotary.h>         // To drive the rotary encoder used for frquency tuning
 #include <SoftwareSerial.h> // To connect Nextion Dispaly 
+#include <Wire.h>           // Used for Si4703 I2C interface.
+
+#include <Si4703.h>         // library to control Silicon Labs' Si4703 FM Radio Receiver.
 #include "nextion.h"        // To drive Nextion Display
+
+#include <radio_config.h>   // Configuration file
+#include <radio_eeprom.h>   // To save configuration parameters such as channel and volume.
+#include <radio_terminal.h> // Serial terminal I/O to display status and control radio
+#include <radio_rotary.h>   // To drive the rotary encoder used for frquency tuning
+#include <radio_display.h>  // to control radio display  
+
+
 //-------------------------------------------------------------------------------------------------------------
 // Initiate classes
 //-------------------------------------------------------------------------------------------------------------
@@ -48,7 +53,7 @@ void setup()
   printWelcome(radio);
   printHelp();
   printCurrentSettings(radio);
-  nexDisp.updateDisplay(radio);
+  updateDisplay(radio,nexDisp);
 
   // Capture Current Time
   previousMillis = millis();          // Remember the time
@@ -66,20 +71,20 @@ void loop()
   if (rotaryUpdated){
     updateChannel(radio);               // Interrupt tells us to update the station when updateStation=True
     printCurrentSettings(radio);
-    nexDisp.updateDisplay(radio);
+    updateDisplay(radio,nexDisp);
   }
   
   // Updates from Serial Terminal
   if (Serial.available()){
     processCommand(radio);              // Radio control from serial interface
     printCurrentSettings(radio);
-    nexDisp.updateDisplay(radio);
+    updateDisplay(radio,nexDisp);
   }
     
   // Refersh Nextion Display
   if(millis() - previousMillis > nexRefresh) {
     previousMillis = millis();          // Remember the time
-    nexDisp.updateDisplay(radio);       // Time to update Display
+    updateDisplay(radio,nexDisp);       // Time to update Display
   }
   
   

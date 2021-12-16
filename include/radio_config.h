@@ -4,8 +4,8 @@
  *   
  */
 
-#ifndef config_h
-#define config_h
+#ifndef _radio_config_h_
+#define _radio_config_h_
 
 //-------------------------------------------------------------------------------------------------------------
 // Status LED used Pins
