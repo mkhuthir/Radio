@@ -3,6 +3,7 @@
  *   Muthanna Alwahash 2020
  *   
  */
+
 #ifndef _terminal_h_
 #define _terminal_h_
 

@@ -1,12 +1,15 @@
 /*  
  *   Terminal Controlled Radio using Si7403 Lib
- *   Muthanna Alwahash 2020
+ *   Muthanna Alwahash 2021
  *   
  */
+
 #ifndef rotary_h
 #define rotary_h
 
-// Direction
+//-------------------------------------------------------------------------------------------------------------
+// Rotary Direction
+//-------------------------------------------------------------------------------------------------------------
 #define UP    true
 #define DOWN  false
 

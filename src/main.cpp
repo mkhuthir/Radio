@@ -3,6 +3,7 @@
  *   Muthanna Alwahash 2021
  *   
  */
+
 //-------------------------------------------------------------------------------------------------------------
 // Required Libraries
 //-------------------------------------------------------------------------------------------------------------
@@ -76,7 +77,7 @@ void loop()
   }
     
   // Refersh Nextion Display
-  if(millis() - previousMillis > refreshInterval) {
+  if(millis() - previousMillis > nexRefresh) {
     previousMillis = millis();          // Remember the time
     nexDisp.updateDisplay(radio);       // Time to update Display
   }

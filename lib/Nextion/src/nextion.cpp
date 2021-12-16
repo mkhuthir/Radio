@@ -1,4 +1,10 @@
 
+/*  
+ *   Nextion Display Example to set text component
+ *   Muthanna Alwahash 2021
+ *   
+ */
+
 #include "nextion.h"
 
 //-------------------------------------------------------------------------------------------------------------
@@ -98,7 +104,7 @@ boolean Nextion::setComponentValue(String component, int value)
 //-------------------------------------------------------------------------------------------------------------
 void Nextion::updateDisplay(Si4703& radio)
 {
-  setComponentText("rssi", String(radio.getRSSI()));
+  setComponentText("rssi",String(radio.getRSSI()));
   setComponentText("freq",String(float(radio.getChannel())/100,2));
   // TODO: Add other parameters VOL,...
 }
