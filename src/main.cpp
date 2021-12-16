@@ -20,7 +20,6 @@
 #include <radio_rotary.h>   // To drive the rotary encoder used for frquency tuning
 #include <radio_display.h>  // to control radio display  
 
-
 //-------------------------------------------------------------------------------------------------------------
 // Initiate classes
 //-------------------------------------------------------------------------------------------------------------
@@ -53,7 +52,7 @@ void setup()
   printWelcome(radio);
   printHelp();
   printCurrentSettings(radio);
-  updateDisplay(radio,nexDisp);
+  updateDisplay(radio, nexDisp);
 
   // Capture Current Time
   previousMillis = millis();          // Remember the time
@@ -71,20 +70,20 @@ void loop()
   if (rotaryUpdated){
     updateChannel(radio);               // Interrupt tells us to update the station when updateStation=True
     printCurrentSettings(radio);
-    updateDisplay(radio,nexDisp);
+    updateDisplay(radio, nexDisp);
   }
   
   // Updates from Serial Terminal
   if (Serial.available()){
     processCommand(radio);              // Radio control from serial interface
     printCurrentSettings(radio);
-    updateDisplay(radio,nexDisp);
+    updateDisplay(radio, nexDisp);
   }
     
   // Refersh Nextion Display
   if(millis() - previousMillis > nexRefresh) {
     previousMillis = millis();          // Remember the time
-    updateDisplay(radio,nexDisp);       // Time to update Display
+    updateDisplay(radio, nexDisp);      // Time to update Display
   }
   
   

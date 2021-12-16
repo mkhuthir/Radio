@@ -7,6 +7,9 @@
 #ifndef _nextion_h_
 #define _nextion_h_
 
+//-------------------------------------------------------------------------------------------------------------
+// Defines
+//-------------------------------------------------------------------------------------------------------------
 #define USE_SOFTWARE_SERIAL // Comment this line for use of HardwareSerial
 
 //-------------------------------------------------------------------------------------------------------------
@@ -38,11 +41,11 @@ class Nextion{
       Nextion(HardwareSerial &next, uint32_t baud);
     #endif
     
-    boolean       ackCommand(void);
-    void          sendCommand(const char* cmd);
-    boolean       init(const char* pageId = "0");
-    boolean       setComponentText(String component, String txt);
-    boolean       setComponentValue(String component, int value);
+    boolean   ackCommand(void);
+    void      sendCommand(const char* cmd);
+    boolean   init(const char* pageId = "0");
+    boolean   setComponentText(String component, String txt);
+    boolean   setComponentValue(String component, int value);
    
 };
 #endif
