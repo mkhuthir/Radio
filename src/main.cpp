@@ -12,7 +12,7 @@
 #include <Wire.h>           // Used for Si4703 I2C interface.
 
 #include <Si4703.h>         // library to control Silicon Labs' Si4703 FM Radio Receiver.
-#include "nextion.h"        // To drive Nextion Display
+#include <nextion.h>        // To drive Nextion Display
 
 #include <radio_config.h>   // Configuration file
 #include <radio_eeprom.h>   // To save configuration parameters such as channel and volume.
