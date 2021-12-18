@@ -16,7 +16,9 @@ void updateDisplay(Si4703& radio, Nextion& disp)
   disp.setComponentText("freq", String(float(radio.getChannel())/100,2));
   disp.setComponentText("rssi", String(radio.getRSSI()));
   disp.setComponentText("vol", String(radio.getVolume()));
-  // TODO: Add other parameters.
+  disp.setComponentText("volext", String(radio.getVolExt()));
+  disp.setComponentText("mute", String(radio.getMute()));
+  disp.setComponentText("mono", String(radio.getMono()));
 }
 
 #endif
