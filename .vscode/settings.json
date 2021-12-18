@@ -1,8 +1,28 @@
 {
     "cSpell.words": [
+        "agcd",
+        "BLNDADJ",
+        "DEVICEID",
+        "DMUTE",
+        "DSMUTE",
         "EEPROM",
         "MFGID",
+        "Powerup",
         "println",
-        "rssi"
+        "RDSM",
+        "rssi",
+        "SCLCK",
+        "sclk",
+        "SDIO",
+        "seekth",
+        "SEEKUP",
+        "SFBL",
+        "SKCNT",
+        "skmode",
+        "SKSNR",
+        "SMRR",
+        "SMUTEA",
+        "SMUTER",
+        "XOSCEN"
     ]
 }
