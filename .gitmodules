@@ -1,0 +1,6 @@
+[submodule "lib/Si4703"]
+	path = lib/Si4703
+	url = https://github.com/mkhuthir/Si4703.git
+[submodule "lib/Nextion"]
+	path = lib/Nextion
+	url = https://github.com/mkhuthir/Nextion.git
