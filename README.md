@@ -53,6 +53,14 @@ C  GND
 - LED2 A      → Si4703 GPIO1
 - LED2 C      → GND
 
+-----------------------
+### Nextion Display
+-----------------------
+- RX      → A.Pro Mini D10 
+- TX      → A.Pro Mini D11
+- +5V     → +5V
+- GND     → GND
+
 ### Description:
 -----------------------
 This is example code can work with SparkFun FamFM radio kit and breadboard builds as per above connections. 
