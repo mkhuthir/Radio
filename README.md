@@ -41,9 +41,9 @@ Connections:
 -----------------------
 ### Rotary Encoder
 -----------------------
-A  A.Pro Mini D2
-B  A.Pro Mini D3
-C  GND
+- A       → A.Pro Mini D2
+- B       → A.Pro Mini D3
+- C       → GND
 
 -----------------------
 ### LEDs
