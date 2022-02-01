@@ -240,11 +240,11 @@ void processCommand(Si4703& radio)
       radio.setChannel(fav_9);
       break;
 
-    case 'r':           // Listen for RDS Data
+    case 'r':                               // Listen for RDS Data
       // TODO:
       break;
 
-    case 'i':           // Print current settings
+    case 'i':                               // Print current settings
       // do nothing, setting will be printed after breaking out
       break;
 
