@@ -70,17 +70,17 @@ void loop()
   if (rotaryUpdated){
     updateChannel(radio);               // Interrupt tells us to update the station when updateStation=True
     printCurrentSettings(radio);
-    updateDisplay(radio, nexDisp);
+    updateDisplay(radio, nexDisp);      // Refresh display every time rotary is changed
   }
   
   // Updates from Serial Terminal
   if (Serial.available()){
     processCommand(radio);              // Radio control from serial interface
     printCurrentSettings(radio);
-    updateDisplay(radio, nexDisp);
+    updateDisplay(radio, nexDisp);      // Refresh display every time terminal command is received
   }
     
-  // Refersh Nextion Display
+  // Periodical Refersh of Nextion Display to show RSSI and other changing paramters.
   if(millis() - previousMillis > nexRefresh) {
     previousMillis = millis();          // Remember the time
     updateDisplay(radio, nexDisp);      // Time to update Display
