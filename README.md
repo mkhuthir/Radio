@@ -5,6 +5,10 @@
 -----------------------   
  *   1 x SparkFun FM Tuner Basic Breakout - Si4703        (https://www.sparkfun.com/products/11083)
  *   1 x Arduino Pro Mini 328 - 3.3V/8MHz                 (https://www.sparkfun.com/products/11114)
+ *   1 x Rotary Encoder
+ *   1 x 2Ch Stereo Audio Amplifier
+ *   2 x 3W 4Ohm Speakers
+ *   1 x Nextion Display
 
 -----------------------   
 
@@ -20,8 +24,21 @@ Connections:
 - RST     → A.Pro Mini D4
 - GPIO1   → LED2
 - GPIO2   → A.Pro Mini D6
-- ROUT    → Amp R-in
-- LOUT    → Amp L-in  
+
+-----------------------
+### Si4703  → Audio Amplifier
+-----------------------
+- GND     → GND
+- ROUT    → R-IN+
+- LOUT    → L-IN+ 
+
+-----------------------
+### Audio Amplifier  → Speakers
+-----------------------
+- R-OUT+     → R-SPK+
+- R-OUT-     → R-SPK-
+- L-OUT+     → L-SPK+
+- L-OUT-     → L-SPK-
 
 -----------------------
 ### 3.3V A.Pro Mini
