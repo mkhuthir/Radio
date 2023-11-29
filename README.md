@@ -1,5 +1,11 @@
 # FM Radio using Silicon Labs Si4703 Chip
 
+After cloning the repository don't forget to update the submodules (Si4703 and Nextion) using the following command:
+
+'''
+git submodule update --init --recursive
+'''
+
 
 ### Hardware used:
 -----------------------   
